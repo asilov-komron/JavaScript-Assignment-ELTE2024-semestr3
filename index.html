@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stargate: The IK-1 team is on a mission</title>
+</head>
+<body>
+
+  
+
+    <h1>Playground: Startgate</h1>
+    <button class="back_to_menu">BACK TO MENU</button>
+    <div class="players_menu">
+        <div class="player" id="pl1">
+            
+            <p class="player_tag">Player 1</p>
+
+
+            <div class="water">
+                <img id="water_img" src="Assets/Water.png" alt="">
+                <p>5</p>
+            </div>
+            
+            <div class="actions">
+                <img id="action_img" src="Assets/Action Points.png" alt="">
+                <p>0</p>
+            </div>
+
+            <button class="dig">Dig</button>
+        
+        </div>
+
+
+        <div class="player" id="pl2">
+            
+            <p class="player_tag">Player 2</p>
+            
+            <div class="water">
+                <img id="water_img" src="Assets/Water.png" alt="">
+                <p>5</p>
+            </div>
+            
+            <div class="actions">
+                <img id="action_img" src="Assets/Action Points.png" alt="">
+                <p>0</p>
+            </div>
+
+
+        </div>
+
+        <div class="timer">
+            
+            <p class="timer_p">START!</p>
+            
+            <img class="part" src="Assets/Item 1.png" alt="">
+            
+            <img class="part" src="Assets/Item 2.png" alt="">
+            
+            <img class="part" src="Assets/Item 3.png" alt="">
+        
+        </div>
+
+        <div class="player" id="pl3">
+
+            <p class="player_tag">Player 3</p> 
+
+            <div class="water">
+                <img id="water_img" src="Assets/Water.png" alt="">
+                <p>5</p>
+            </div>
+            
+            <div class="actions">
+                <img id="action_img" src="Assets/Action Points.png" alt="">
+                <p>0</p>
+            </div>
+
+            
+        </div>
+
+        <div class="player" id="pl4">
+            <p class="player_tag">Player 4</p>
+ 
+            <div class="water">
+                <img id="water_img" src="Assets/Water.png" alt="">
+                <p>5</p>
+            </div>
+            
+            <div class="actions">
+                <img id="action_img" src="Assets/Action Points.png" alt="">
+                <p>0</p>
+            </div>
+
+            
+        </div>
+
+
+    </div>
+
+
+    <div id="overlay_lost">
+        <div id="banner">
+            <p>Game Over!</p>
+            <button onclick="goToMenu()">Go Back to Menu</button>
+        </div>
+    </div>
+
+
+    <div id="overlay_won">
+        <div id="banner">
+            <p>Victory, well done!</p>
+            <button onclick="goToMenu()">Go Back to Menu</button>
+        </div>
+    </div>
+    
+
+    <table class="table"></table>
+
+</body>
+
+
+
+<script src="script.js"></script>
+<script src="design.js"></script>
+</html>
