@@ -42,3 +42,11 @@ The most serious consequence of a disciplinary offence is dismissal from the uni
 [ ] Home screen: allow the player(s) to specify how much time they want to complete the game, and after the specified time the game ends (1 point)
 [ ] Movement: the step is animated (1 point)
 [ ] Save: The game constantly saves its state in localStorage.(2 points)
+
+
+
+- The game should be loaded from the menu.html page
+- Click the adjacent cell to player to move
+- Use the dig button to reveal what is hidden under cell
+- You will win the game in case you collect all three parts
+- Game is over if you run out of water or time
