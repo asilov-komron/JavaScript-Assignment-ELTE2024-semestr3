@@ -145,8 +145,8 @@ body {
 }
 
 .table td{
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     
     background-color: burlywood;
     border-radius: 8.333px; /* Decreased by 1.2 */
@@ -240,4 +240,47 @@ body {
 
 #banner button:hover {
     background-color: #614f2a;
+}
+
+@media screen and (max-width: 500px){
+    .table td{
+        height: 2.9rem;
+        width: 2.9rem;
+    }
+  .timer{
+    /* background-color: blueviolet; */
+    width: 8rem; /* Decreased by 1.2 */
+    height: 12rem; /* Decreased by 1.2 */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 33.5%; /* Adjusted manually */
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: antiquewhite;
+    border: 3px solid black;
+    border-radius: 8.333px; /* Decreased by 1.2 */
+    font-size: 1.3rem; /* Decreased by 1.2 */
+}
+.players_menu{
+    width: 14rem; /* Decreased by 1.2 */
+    height: 20.833rem; /* Decreased by 1.2 */
+    /* background-color: red; */
+    margin: auto;
+    margin-top: -3rem;
+    position: relative;
+}
+.player{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 8.333px; /* Decreased by 1.2 */
+    border-color: black;
+    background-color: antiquewhite;
+    border: 20px solid rgba(59, 37, 10, 0.216);  /* Decreased by 1.2 */
+    font-size: 0.833rem; /* Decreased by 1.2 */
+    width: 6rem; /* Decreased by 1.2 */
+    height: 9.667rem; /* Decreased by 1.2 */
+}
+
 }

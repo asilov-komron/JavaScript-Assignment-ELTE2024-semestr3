@@ -3,124 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Stargate: The IK-1 team is on a mission</title>
+    <title>Game Menu</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-image: url(Assets/bg_menu.jpg);
+            background-size: cover;
+            text-align: center;
+            
+        }
+        .menu-container {
+            margin-top: 12rem;
+        }
+
+        button{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+           
+        }
+
+        
+        .menu-button {
+            padding: 10px 20px;
+            font-size: 2rem;
+            background-color: #977C42
+;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .menu-button:hover {
+            background-color: #614f2a;
+        }
+        .options-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .options-button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #977C42;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .options-button:hover {
+            background-color: #614f2a;
+        }
+
+
+        .submit-button{
+            padding: 10px 20px;
+            font-size: 2rem;
+            background-color: #977C42;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 10px;  
+            margin-top: 30px; 
+            display: none;
+        }
+
+        .submit-button:hover{
+            background-color: #614f2a;
+        }
+
+
+            .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-container p {
+            border-radius: 10px;
+            color: black;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .input-container input{
+            /* margin: 0.5rem; */
+            height: 2rem;
+            width: 10rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+
+        h1,h2{
+            font-size: 4rem;
+            color: black;
+        }
+
+    </style>
 </head>
 <body>
 
-  
+<div class="menu-container">
+    <h1>STARGATE MENU</h1>
+    <button class="menu-button" onclick="showOptions()">START GAME</button>
+    <div class="options-container" id="optionsContainer">
+        <h2>CHOOSE NUMBER OF PLAYERS</h2>
+        <button class="options-button" onclick="startGame(1)">1 PLAYER</button>
+        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(2)">2 PLAYERS</button>
+        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(3)">3 PLAYERS</button>
+        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(4)">4 PLAYERS</button>
+    </div>
+    <button class="submit-button">SUBMIT</button>
+</div>
 
-    <h1>Playground: Startgate</h1>
-    <button class="back_to_menu">BACK TO MENU</button>
-    <div class="players_menu">
-        <div class="player" id="pl1">
-            
-            <p class="player_tag">Player 1</p>
+<script>
+    let player_names = [];
+    let timer_num = 0;
+    let numPlayers = 0;
+    let submitButton = document.querySelector('.submit-button');
+    let menu_button = document.querySelector('.menu-button');
+
+    let optionsButtons = document.querySelectorAll('.options-button');
+    let optionsContainer = document.querySelector('.options-container');
+
+    function showOptions() {
+        menu_button.style.display = 'none'
+        optionsContainer.style.display = 'block';
+    }
+
+    function startGame(num_Players) {
+        numPlayers = num_Players;
+        submitButton.style.display = 'inline';
+        createInputFields();
+    }
+
+    submitButton.addEventListener('click', () => {
+    let inputs = document.querySelectorAll('.options-container input');
+    player_names = [];
+    inputs.forEach(input => {
+        player_names.push(input.value);
+    });
+
+    let timer_input = document.querySelector('.options-container input[type="number"]');
+    timer_num = parseInt(timer_input.value);
+
+    // Check if timer_num is a positive number
+    if (timer_num > 0 || isNaN(timer_num)) {
+        // Construct the URL and redirect only if timer_num is non-negative
+        window.location.href = 'main.html?players=' + numPlayers + '&names=' + encodeURIComponent(player_names.join(',')) + '&timer=' + timer_num;
+    } else{
+        // Display an error message or take other appropriate action
+        alert('Timer should be a greater than 0.');
+    }
+    console.log(timer_num)
+});
 
 
-            <div class="water">
-                <img id="water_img" src="Assets/Water.png" alt="">
-                <p>5</p>
-            </div>
-            
-            <div class="actions">
-                <img id="action_img" src="Assets/Action Points.png" alt="">
-                <p>0</p>
-            </div>
+    optionsButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            optionsButtons.forEach(btn => {
+                btn.style.backgroundColor = '#3498db'; // Reset all buttons' background color
+            });
+            button.style.backgroundColor = 'black';
+            startGame(parseInt(button.textContent)); // Start the game with the selected number of players
+        });
+    });
 
-            <button class="dig">Dig</button>
+    function createInputFields() {
+        let menu_button = document.querySelector(".menu-button")
         
-        </div>
+        let back_button = document.createElement('button')
+        back_button.innerText = 'BACK'
+        back_button.classList.add('menu-button')
+        back_button.addEventListener('click', ()=>{
+            location.reload()
+        })
 
+        menu_button.parentNode.replaceChild(back_button, menu_button)
 
-        <div class="player" id="pl2">
-            
-            <p class="player_tag">Player 2</p>
-            
-            <div class="water">
-                <img id="water_img" src="Assets/Water.png" alt="">
-                <p>5</p>
-            </div>
-            
-            <div class="actions">
-                <img id="action_img" src="Assets/Action Points.png" alt="">
-                <p>0</p>
-            </div>
+        optionsContainer.innerHTML = '';
+        let inputContainer = document.createElement('div')
+        inputContainer.classList.add('input-container')
+        optionsContainer.append(inputContainer)
 
+        let p = document.createElement('p')
+        p.innerText = "Enter player name: "
+        inputContainer.appendChild(p)
+        for (let i = 0; i < numPlayers; i++) {
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Enter Player ' + (i + 1) + ' Name';
+            inputContainer.appendChild(input);
+            inputContainer.appendChild(document.createElement('br')); // Line break for spacing
+        }
 
-        </div>
+        let timer_p = document.createElement('p')
+        timer_p.innerText = "Set a timer: "
+        let timer_input = document.createElement('input')
+        timer_input.type = 'number'
+        timer_input.placeholder = 'Enter an integer'
+        timer_input.step = '1'
+        timer_input.min = '1'
+        inputContainer.append(timer_p)
+        inputContainer.append(timer_input)
 
-        <div class="timer">
-            
-            <p class="timer_p">START!</p>
-            
-            <img class="part" src="Assets/Item 1.png" alt="">
-            
-            <img class="part" src="Assets/Item 2.png" alt="">
-            
-            <img class="part" src="Assets/Item 3.png" alt="">
-        
-        </div>
+     
 
-        <div class="player" id="pl3">
+    }
 
-            <p class="player_tag">Player 3</p> 
-
-            <div class="water">
-                <img id="water_img" src="Assets/Water.png" alt="">
-                <p>5</p>
-            </div>
-            
-            <div class="actions">
-                <img id="action_img" src="Assets/Action Points.png" alt="">
-                <p>0</p>
-            </div>
-
-            
-        </div>
-
-        <div class="player" id="pl4">
-            <p class="player_tag">Player 4</p>
- 
-            <div class="water">
-                <img id="water_img" src="Assets/Water.png" alt="">
-                <p>5</p>
-            </div>
-            
-            <div class="actions">
-                <img id="action_img" src="Assets/Action Points.png" alt="">
-                <p>0</p>
-            </div>
-
-            
-        </div>
-
-
-    </div>
-
-
-    <div id="overlay_lost">
-        <div id="banner">
-            <p>Game Over!</p>
-            <button onclick="goToMenu()">Go Back to Menu</button>
-        </div>
-    </div>
-
-
-    <div id="overlay_won">
-        <div id="banner">
-            <p>Victory, well done!</p>
-            <button onclick="goToMenu()">Go Back to Menu</button>
-        </div>
-    </div>
     
+</script>
 
-    <table class="table"></table>
 
 </body>
-
-
-
-<script src="script.js"></script>
-<script src="design.js"></script>
 </html>

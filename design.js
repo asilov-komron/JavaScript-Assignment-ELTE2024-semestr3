@@ -66,7 +66,7 @@
     
     
     back_to_menu.addEventListener("click", ()=>{
-        window.location.href = "menu.html"
+        window.location.href = "index.html"
     })
     
     
@@ -131,13 +131,9 @@
 
     
     
-// function gameOver() {
-//     // Display the overlay
-//     overlay.style.display = 'block';
-// }
+
 
 
 function goToMenu() {
-    // Redirect to the menu page
-    window.location.href = 'menu.html'; // Change 'menu.html' to the actual URL of your menu page
+    window.location.href = 'index.html'
 }
