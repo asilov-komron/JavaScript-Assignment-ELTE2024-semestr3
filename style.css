@@ -5,7 +5,7 @@ body {
 }
 
 .players_menu {
-    width: 38rem;
+    width: 28rem;
     /* Decreased by 1.2 */
     height: 20.833rem;
     /* Decreased by 1.2 */
@@ -20,31 +20,29 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     border-radius: 8.333px;
-    /* Decreased by 1.2 */
     border-color: black;
     background-color: antiquewhite;
     border: 20px solid rgba(59, 37, 10, 0.216);
-    /* Decreased by 1.2 */
     font-size: 0.833rem;
-    /* Decreased by 1.2 */
-    width: 12rem;
-    /* Decreased by 1.2 */
-    height: 9.667rem;
-    /* Decreased by 1.2 */
+    width: 12.6rem;
+    height: 20rem;
+    margin-left: 0rem;
+    
 }
 
 
 .dig {
-    height: 2rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 5rem;
     position: absolute;
     right: 0;
-    margin-right: 2rem;
-    margin-top: 1rem;
+    margin-right: 1.7rem;
+    margin-top: 1.1rem;
 
 
     font-size: 1rem;
     background-color: #977C42;
+    
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -101,14 +99,14 @@ body {
 
 .timer {
     /* background-color: blueviolet; */
-    width: 12rem;
+    width: 12.5rem;
     /* Decreased by 1.2 */
-    height: 20.833rem;
+    height: 20rem;
     /* Decreased by 1.2 */
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 33.5%;
+    left: 53.5%;
     /* Adjusted manually */
     align-items: center;
     justify-content: space-evenly;
@@ -140,6 +138,7 @@ body {
 .water {
     display: flex;
     flex-direction: row;
+    margin-left: 1rem;
 }
 
 
@@ -148,6 +147,7 @@ body {
     display: flex;
     flex-direction: row;
     height: 2.083rem;
+    margin-left: 1rem;
     /* Decreased by 1.2 */
 }
 
