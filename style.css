@@ -145,8 +145,8 @@ body {
 }
 
 .table td{
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 4.5rem;
     
     background-color: burlywood;
     border-radius: 8.333px; /* Decreased by 1.2 */
