@@ -118,7 +118,7 @@
     }
     
 
-    if(player1_exists) pl1.style.border = `2px solid ${player1_color}`
+    if(player1_exists) pl1.style.border = `3px solid ${player1_color}`
 
 
     if(player2_exists) pl2.style.border = `2px solid ${player2_color}`

@@ -213,7 +213,7 @@ dig_button.addEventListener('click', () => {
 
     ////////////////////CLUE ON X
 
-    if (clue_1.includes(player_curr_coord_str)) {
+    if (clue_1.includes(player_curr_coord_str) && !dug.includes(player_curr_coord_str)) {
 
 
         let x = clue_1.split(',')[0]
@@ -268,7 +268,7 @@ dig_button.addEventListener('click', () => {
     ////////////////////CLUE ON Y
 
 
-    if (clue_2.includes(player_curr_coord_str)) {
+    if (clue_2.includes(player_curr_coord_str) && !dug.includes(player_curr_coord_str)) {
 
 
         let x = clue_2.split(',')[0]
@@ -555,8 +555,9 @@ function setPlayer(row, col) {
 
     let img = document.createElement('img')
     img.src = "Assets/Player.png"
-    img.style.width = "100%"
-    img.style.height = "90%"
+    img.style.width = "80%"
+    img.style.height = "80%"
+    img.style.marginLeft = "0.3rem"
     td.appendChild(img)
 }
 

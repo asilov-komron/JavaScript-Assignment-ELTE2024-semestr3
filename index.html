@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+
     <title>Game Menu</title>
     <style>
+      
+
+
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Kanit';
             background-image: url(Assets/bg_menu.jpg);
             background-size: cover;
             text-align: center;
-            
+
         }
+
         .menu-container {
             margin-top: 12rem;
         }
 
-        button{
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-           
+        button {
+            font-family: 'Kanit';
+
         }
 
-        
+
         .menu-button {
             padding: 10px 20px;
             font-size: 2rem;
-            background-color: #977C42
-;
+            background-color: #977C42;
             color: #fff;
             border: none;
             border-radius: 10px;
             cursor: pointer;
         }
+
         .menu-button:hover {
             background-color: #614f2a;
         }
+
         .options-container {
             display: none;
             margin-top: 20px;
         }
+
         .options-button {
             padding: 10px 20px;
             font-size: 1.5rem;
@@ -49,12 +58,13 @@
             cursor: pointer;
             margin: 0 10px;
         }
+
         .options-button:hover {
             background-color: #614f2a;
         }
 
 
-        .submit-button{
+        .submit-button {
             padding: 10px 20px;
             font-size: 2rem;
             background-color: #977C42;
@@ -62,17 +72,17 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin: 0 10px;  
-            margin-top: 30px; 
+            margin: 0 10px;
+            margin-top: 30px;
             display: none;
         }
 
-        .submit-button:hover{
+        .submit-button:hover {
             background-color: #614f2a;
         }
 
 
-            .input-container {
+        .input-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -86,7 +96,7 @@
             font-weight: bold;
         }
 
-        .input-container input{
+        .input-container input {
             /* margin: 0.5rem; */
             height: 2rem;
             width: 10rem;
@@ -95,126 +105,172 @@
         }
 
 
-        h1,h2{
+        h1,
+        h2 {
             font-size: 4rem;
             color: black;
         }
 
-    </style>
-</head>
-<body>
-
-<div class="menu-container">
-    <h1>STARGATE MENU</h1>
-    <button class="menu-button" onclick="showOptions()">START GAME</button>
-    <div class="options-container" id="optionsContainer">
-        <h2>CHOOSE NUMBER OF PLAYERS</h2>
-        <button class="options-button" onclick="startGame(1)">1 PLAYER</button>
-        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(2)">2 PLAYERS</button>
-        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(3)">3 PLAYERS</button>
-        <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(4)">4 PLAYERS</button>
-    </div>
-    <button class="submit-button">SUBMIT</button>
-</div>
-
-<script>
-    let player_names = [];
-    let timer_num = 0;
-    let numPlayers = 0;
-    let submitButton = document.querySelector('.submit-button');
-    let menu_button = document.querySelector('.menu-button');
-
-    let optionsButtons = document.querySelectorAll('.options-button');
-    let optionsContainer = document.querySelector('.options-container');
-
-    function showOptions() {
-        menu_button.style.display = 'none'
-        optionsContainer.style.display = 'block';
-    }
-
-    function startGame(num_Players) {
-        numPlayers = num_Players;
-        submitButton.style.display = 'inline';
-        createInputFields();
-    }
-
-    submitButton.addEventListener('click', () => {
-    let inputs = document.querySelectorAll('.options-container input');
-    player_names = [];
-    inputs.forEach(input => {
-        player_names.push(input.value);
-    });
-
-    let timer_input = document.querySelector('.options-container input[type="number"]');
-    timer_num = parseInt(timer_input.value);
-
-    // Check if timer_num is a positive number
-    if (timer_num > 0 || isNaN(timer_num)) {
-        // Construct the URL and redirect only if timer_num is non-negative
-        window.location.href = 'main.html?players=' + numPlayers + '&names=' + encodeURIComponent(player_names.join(',')) + '&timer=' + timer_num;
-    } else{
-        // Display an error message or take other appropriate action
-        alert('Timer should be a greater than 0.');
-    }
-    console.log(timer_num)
-});
 
 
-    optionsButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            optionsButtons.forEach(btn => {
-                btn.style.backgroundColor = '#3498db'; // Reset all buttons' background color
-            });
-            button.style.backgroundColor = 'black';
-            startGame(parseInt(button.textContent)); // Start the game with the selected number of players
-        });
-    });
+        @media screen and (max-width: 500px){
+            body {
+            font-family: 'Kanit';
+            background-image: url(Assets/bg_menu_small.jpg);
+            background-size: cover;
+            text-align: center;
 
-    function createInputFields() {
-        let menu_button = document.querySelector(".menu-button")
-        
-        let back_button = document.createElement('button')
-        back_button.innerText = 'BACK'
-        back_button.classList.add('menu-button')
-        back_button.addEventListener('click', ()=>{
-            location.reload()
-        })
-
-        menu_button.parentNode.replaceChild(back_button, menu_button)
-
-        optionsContainer.innerHTML = '';
-        let inputContainer = document.createElement('div')
-        inputContainer.classList.add('input-container')
-        optionsContainer.append(inputContainer)
-
-        let p = document.createElement('p')
-        p.innerText = "Enter player name: "
-        inputContainer.appendChild(p)
-        for (let i = 0; i < numPlayers; i++) {
-            let input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = 'Enter Player ' + (i + 1) + ' Name';
-            inputContainer.appendChild(input);
-            inputContainer.appendChild(document.createElement('br')); // Line break for spacing
         }
 
-        let timer_p = document.createElement('p')
-        timer_p.innerText = "Set a timer: "
-        let timer_input = document.createElement('input')
-        timer_input.type = 'number'
-        timer_input.placeholder = 'Enter an integer'
-        timer_input.step = '1'
-        timer_input.min = '1'
-        inputContainer.append(timer_p)
-        inputContainer.append(timer_input)
+        .menu-container {
+            margin-top: 15rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: black;
+        }
 
-     
+        .options-button {
+            font-size: 1rem;
+            background-color: #977C42;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
 
-    }
+        .input-container p {
+            border-radius: 10px;
+            color: black;
+            margin: 0;
+            margin-bottom: 0.1rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
 
-    
-</script>
+
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-container">
+        <h1>STARGATE MENU</h1>
+        <button class="menu-button" onclick="showOptions()">START GAME</button>
+        <div class="options-container" id="optionsContainer">
+            <h2>CHOOSE NUMBER OF PLAYERS</h2>
+            <button class="options-button" onclick="startGame(1)">1 PLAYER</button>
+            <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(2)">2 PLAYERS</button>
+            <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(3)">3 PLAYERS</button>
+            <button disabled style="opacity: 0.5;" class="options-button" onclick="startGame(4)">4 PLAYERS</button>
+        </div>
+        <button class="submit-button">SUBMIT</button>
+    </div>
+
+    <script>
+        let player_names = [];
+        let timer_num = 0;
+        let numPlayers = 0;
+        let submitButton = document.querySelector('.submit-button');
+        let menu_button = document.querySelector('.menu-button');
+
+        let optionsButtons = document.querySelectorAll('.options-button');
+        let optionsContainer = document.querySelector('.options-container');
+
+        function showOptions() {
+            menu_button.style.display = 'none'
+            optionsContainer.style.display = 'block';
+        }
+
+        function startGame(num_Players) {
+            numPlayers = num_Players;
+            submitButton.style.display = 'inline';
+            createInputFields();
+        }
+
+        submitButton.addEventListener('click', () => {
+            let inputs = document.querySelectorAll('.options-container input');
+            player_names = [];
+            inputs.forEach(input => {
+                player_names.push(input.value);
+            });
+
+            let timer_input = document.querySelector('.options-container input[type="number"]');
+            timer_num = parseInt(timer_input.value);
+
+            // Check if timer_num is a positive number
+            if (timer_num > 0 || isNaN(timer_num)) {
+                // Construct the URL and redirect only if timer_num is non-negative
+                window.location.href = 'main.html?players=' + numPlayers + '&names=' + encodeURIComponent(player_names.join(',')) + '&timer=' + timer_num;
+            } else {
+                // Display an error message or take other appropriate action
+                alert('Timer should be a greater than 0.');
+            }
+            console.log(timer_num)
+        });
+
+
+        optionsButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                optionsButtons.forEach(btn => {
+                    btn.style.backgroundColor = '#3498db'; // Reset all buttons' background color
+                });
+                button.style.backgroundColor = 'black';
+                startGame(parseInt(button.textContent)); // Start the game with the selected number of players
+            });
+        });
+
+        function createInputFields() {
+            let menu_button = document.querySelector(".menu-button")
+
+            let back_button = document.createElement('button')
+            back_button.innerText = 'BACK'
+            back_button.classList.add('menu-button')
+            back_button.addEventListener('click', () => {
+                location.reload()
+            })
+
+            menu_button.parentNode.replaceChild(back_button, menu_button)
+
+            optionsContainer.innerHTML = '';
+            let inputContainer = document.createElement('div')
+            inputContainer.classList.add('input-container')
+            optionsContainer.append(inputContainer)
+
+            let p = document.createElement('p')
+            p.innerText = "Enter player name: "
+            inputContainer.appendChild(p)
+            for (let i = 0; i < numPlayers; i++) {
+                let input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'Enter Player ' + (i + 1) + ' Name';
+                inputContainer.appendChild(input);
+                inputContainer.appendChild(document.createElement('br')); // Line break for spacing
+            }
+
+            let timer_p = document.createElement('p')
+            timer_p.innerText = "Set a timer: "
+            let timer_input = document.createElement('input')
+            timer_input.type = 'number'
+            timer_input.placeholder = 'Enter an integer'
+            timer_input.step = '1'
+            timer_input.min = '1'
+            inputContainer.append(timer_p)
+            inputContainer.append(timer_input)
+
+
+
+        }
+
+
+    </script>
 
 
 </body>
+
 </html>
