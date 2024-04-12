@@ -244,7 +244,7 @@ dig_button.addEventListener('click', () => {
                 updatePlayerWaterDOM()
                 dug.push(player_curr_cell)
 
-                clue_for_item123[j].push(player_curr_cell)
+                clue_for_item123[j].push(player_curr_coord_str)
 
             }
             else {
@@ -257,7 +257,7 @@ dig_button.addEventListener('click', () => {
                 updatePlayerWaterDOM()
                 dug.push(player_curr_cell)
 
-                clue_for_item123[j].push(player_curr_cell)
+                clue_for_item123[j].push(player_curr_coord_str)
 
             }
         }
@@ -291,7 +291,7 @@ dig_button.addEventListener('click', () => {
                 updatePlayerWaterDOM()
                 dug.push(player_curr_cell)
 
-                clue_for_item123[j].push(player_curr_cell)
+                clue_for_item123[j].push(player_curr_coord_str)
 
 
 
@@ -307,7 +307,7 @@ dig_button.addEventListener('click', () => {
                 dug.push(player_curr_cell)
 
 
-                clue_for_item123[j].push(player_curr_cell)
+                clue_for_item123[j].push(player_curr_coord_str)
 
 
             }
